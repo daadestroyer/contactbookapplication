@@ -12,3 +12,14 @@ body{
     color: white;
 
 }
+#signupcontainer{
+    width: 100%;
+    height: 92vh;
+    background:  url(../img/register-bg-image.jpg);
+    background-size: cover;
+    color: black;
+}
+.my-card{
+    padding: 20px;
+    background: white;
+}

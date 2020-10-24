@@ -9,7 +9,7 @@ public class UserTable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String Name;
+    private String name;
     @Column(unique = true)
     private String email;
     private String password;
@@ -32,11 +32,11 @@ public class UserTable {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getEmail() {
@@ -91,7 +91,7 @@ public class UserTable {
     public String toString() {
         return "UserTable{" +
                 "id=" + id +
-                ", Name='" + Name + '\'' +
+                ", Name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +

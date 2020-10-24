@@ -9,9 +9,43 @@
 </head>
 <body>
 <section>
-    <center><h1>This is signup page</h1>
+    <div class="container-fluid" id="signupcontainer">
+        <div class="row">
+            <div class="col-md-5 offset-md-7">
+                <div class="my-card mt-2">
+                    <div class="container text-center">
+                        <img style="width: 100px;" src="" th:src="@{../img/register.png}" alt="">
+                    </div>
 
-    </center>
+                    <form action="" th:action="@{/register}" method="post">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" required placeholder="Enter your name">
+
+                        </div>
+                        <div class="form-group  ">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" required placeholder="Enter your email">
+
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" required placeholder="Enter your password">
+
+                        </div>
+                        <div class="form-group">
+                            <label >About</label>
+                            <textarea class="form-control" name="about" rows="5" placeholder="Enter something about you"></textarea>
+                        </div>
+                        <div class="container text-center">
+                            <button type="submit" class="btn bg-primary btn-block text-white">Submit</button>
+                            <button type="reset" class="btn btn-danger btn-block text-white">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
 </body>
