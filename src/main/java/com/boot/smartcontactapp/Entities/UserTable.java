@@ -36,7 +36,7 @@ public class UserTable {
     }
 
     public void setName(String name) {
-        name = name;
+        this.name = name;
     }
 
     public String getEmail() {
@@ -87,22 +87,6 @@ public class UserTable {
         this.about = about;
     }
 
-    @Override
-    public String toString() {
-        return "UserTable{" +
-                "id=" + id +
-                ", Name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", enabled=" + enabled +
-                ", imageURL='" + imageURL + '\'' +
-                ", about='" + about + '\'' +
-                '}';
-    }
-
-
-
     public UserTable() {
     }
 
@@ -112,5 +96,20 @@ public class UserTable {
 
     public void setContacts(List<ContactTable> contacts) {
         this.contacts = contacts;
+    }
+
+    @Override
+    public String toString() {
+        return "UserTable{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", enabled=" + enabled +
+                ", imageURL='" + imageURL + '\'' +
+                ", about='" + about + '\'' +
+                ", contacts=" + contacts +
+                '}';
     }
 }
