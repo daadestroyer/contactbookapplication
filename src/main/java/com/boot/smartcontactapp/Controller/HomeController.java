@@ -2,11 +2,14 @@ package com.boot.smartcontactapp.Controller;
 
 
 import com.boot.smartcontactapp.Entities.UserTable;
+import com.boot.smartcontactapp.Helper.Message;
 import com.boot.smartcontactapp.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -36,20 +39,26 @@ public class HomeController {
 
     // handler for registering user
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") UserTable user, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model) {
-        if (!agreement) {
+    public String registerUser(@ModelAttribute("user") UserTable user, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model, HttpSession session) {
+        try {
+            if (!agreement) {
+                throw new Exception("You have not agreed the terms and condition !");
+            }
+            user.setRole("role_user");
+            user.setEnabled(true);
+            user.setImageURL("default.png");
+
+            UserTable ut = this.userRepo.save(user);
+            model.addAttribute("user", new UserTable()); // Putting new user for another registration after successful registration
+            session.setAttribute("message", new Message("Successfully Registered !!!", "alert-success"));
+
+            return "signup";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("user", user);
+            session.setAttribute("message", new Message("Something went wrong ! " + e.getMessage(), "alert-danger"));
             return "signup";
         }
-        user.setRole("role_user");
-        user.setEnabled(true);
-
-        System.out.println("Agreement " + agreement);
-        System.out.println("User " + user);
-
-        UserTable ut = this.userRepo.save(user);
-        System.out.println("User Saved : "+ut);
-
-        model.addAttribute("user",user);
-        return "signup";
     }
 }

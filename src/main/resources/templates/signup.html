@@ -12,33 +12,46 @@
     <div class="container-fluid" id="signupcontainer">
         <div class="row">
             <div class="col-md-5 offset-md-7">
-                <div class="my-card mt-2">
+
+                <div class="my-card">
+                    <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert text-center"
+                         role="alert">
+                        <p style="font-weight: bold;" class="text-center"  th:text="${session.message.content}"> </p>
+                        <!--print this one time-->
+                        <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                        <!--After printing it one time then remove-->
+                    </div>
                     <div class="container text-center">
-                        <img style="width: 100px;" src="" th:src="@{../img/register.png}" alt="">
+                        <img style="width: 50px;" src="" th:src="@{../img/register.png}" alt="">
+
                     </div>
 
                     <form action="" th:action="@{/register}" method="post" th:object="${user}">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" required placeholder="Enter your name" th:value="${user.name}">
+                            <input type="text" class="form-control" name="name" required placeholder="Enter your name"
+                                   th:value="${user.name}">
 
                         </div>
                         <div class="form-group  ">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" required placeholder="Enter your email" th:value="${user.email}">
+                            <input type="email" class="form-control" name="email" required
+                                   placeholder="Enter your email" th:value="${user.email}">
 
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" name="password" required placeholder="Enter your password" th:value="${user.password}">
+                            <input type="password" class="form-control" name="password" required
+                                   placeholder="Enter your password" th:value="${user.password}">
 
                         </div>
                         <div class="form-group">
-                            <label >About</label>
-                            <textarea class="form-control" name="about" rows="5" placeholder="Enter something about you" th:value="${user.about}"></textarea>
+                            <label>About</label>
+                            <textarea class="form-control" name="about" rows="5" placeholder="Enter something about you"
+                                      th:text="${user.about}"></textarea>
                         </div>
                         <div class="form-group form-check text-center">
-                            <input type="checkbox" name="agreement" class="form-check-input" id="agreement" />
+                            <input type="checkbox" name="agreement" class="form-check-input" id="agreement"/>
                             <label for="agreement">Accept Terms and Conditions</label>
                         </div>
                         <div class="container text-center">
