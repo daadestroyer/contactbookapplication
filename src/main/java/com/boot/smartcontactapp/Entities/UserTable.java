@@ -1,6 +1,11 @@
 package com.boot.smartcontactapp.Entities;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,14 +14,26 @@ public class UserTable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @NotBlank(message = "Name should not be blank!")
+    @Size(min = 2 , max = 20,message = "min 2 and max 20 character are allowed!")
     private String name;
+
     @Column(unique = true)
+    @NotBlank(message="Email should not be blank")
+    @Pattern(regexp = "^[a-zA-Z0-9+._.-]+@[a-zA-Z0-9.-]+$" , message = "Invalid Email!")
     private String email;
+
+    @NotBlank(message = "Password should not be blank")
+    @Size(min=6 , max = 20 , message = "Password must be greater than 6 and less than 20 character!")
     private String password;
+
     private String role;
     private boolean enabled;
     private String imageURL;
-    @Column(length = 500)
+
+    @NotBlank(message = "About should not be blank!")
+    @Length(min = 20 , max = 1000 , message = "About must be greater than 6 and less than 1000 length!")
     private String about;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "userTable") // one user may have many contacts

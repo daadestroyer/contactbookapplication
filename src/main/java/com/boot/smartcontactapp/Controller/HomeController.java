@@ -7,9 +7,11 @@ import com.boot.smartcontactapp.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -39,10 +41,15 @@ public class HomeController {
 
     // handler for registering user
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") UserTable user, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model, HttpSession session) {
+    public String registerUser(@Valid @ModelAttribute("user") UserTable user , BindingResult result, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model  ,HttpSession session  ) {
         try {
             if (!agreement) {
                 throw new Exception("You have not agreed the terms and condition !");
+            }
+            if(result.hasErrors()){
+                System.out.println("ERROR!!!"+result.toString());
+                model.addAttribute("user",user);
+                return "signup";
             }
             user.setRole("role_user");
             user.setEnabled(true);
