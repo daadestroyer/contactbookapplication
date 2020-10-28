@@ -31,7 +31,8 @@
                             <div class="col-md-6 form-group mt-3">
                                 <label>Name</label>
                                 <input type="text" class="form-control "
-                                       th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''} " name="name" required
+                                       th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''} " name="name"
+                                       required
                                        placeholder="Enter your name"
                                        th:value="${user.name}">
                                 <!--If any error come in name field then this class 'is-invalid' appended with class and becomes class= "form-control is-invalid"-->
@@ -41,7 +42,9 @@
                             </div>
                             <div class="col-md-6 form-group mt-3 ">
                                 <label>Email</label>
-                                <input type="email" class="form-control" th:classappend="${#fields.hasErrors('email')? 'is-invalid':''}" name="email" required
+                                <input type="email" class="form-control"
+                                       th:classappend="${#fields.hasErrors('email')? 'is-invalid':''}" name="email"
+                                       required
                                        placeholder="Enter your email" th:value="${user.email}">
 
                                 <div class="invalid-feedback" th:each="e : ${#fields.errors('email')}" th:text="${e}">
@@ -54,18 +57,24 @@
                         <div class="row">
                             <div class="col-md-6 form-group ">
                                 <label>Password</label>
-                                <input type="password" class="form-control" th:classappend="${#fields.hasErrors('password') ? 'is-invalid':'' }" name="password" required
+                                <input type="password" class="form-control"
+                                       th:classappend="${#fields.hasErrors('password') ? 'is-invalid':'' }"
+                                       name="password" required
                                        placeholder="Enter your password" th:value="${user.password}">
 
-                                <div class="invalid-feedback" th:each="e : ${#fields.errors('password')}" th:text="${e}"></div>
+                                <div class="invalid-feedback" th:each="e : ${#fields.errors('password')}"
+                                     th:text="${e}"></div>
                             </div>
 
                             <div class="col-md-6 form-group">
                                 <label>About</label>
-                                <textarea class="form-control" th:classappend="${#fields.hasErrors('about') ? 'is-invalid':''}" name="about" rows="3" placeholder="Enter something about you"
+                                <textarea class="form-control"
+                                          th:classappend="${#fields.hasErrors('about') ? 'is-invalid':''}" name="about"
+                                          rows="3" placeholder="Enter something about you"
                                           th:text="${user.about}"></textarea>
 
-                                <div class="invalid-feedback" th:each="e : ${#fields.errors('about')}" th:text="${e}"></div>
+                                <div class="invalid-feedback" th:each="e : ${#fields.errors('about')}"
+                                     th:text="${e}"></div>
                             </div>
                         </div>
                         <div class="form-group form-check text-center">

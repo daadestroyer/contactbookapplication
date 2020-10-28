@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "user")
-public class UserTable {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -37,7 +37,7 @@ public class UserTable {
     private String about;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "userTable") // one user may have many contacts
-    private List<ContactTable> contacts = new ArrayList<>();
+    private List<Contact> contacts = new ArrayList<>();
 
 
     public int getId() {
@@ -104,14 +104,14 @@ public class UserTable {
         this.about = about;
     }
 
-    public UserTable() {
+    public User() {
     }
 
-    public List<ContactTable> getContacts() {
+    public List<Contact> getContacts() {
         return contacts;
     }
 
-    public void setContacts(List<ContactTable> contacts) {
+    public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
     }
 

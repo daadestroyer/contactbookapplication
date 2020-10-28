@@ -3,7 +3,7 @@ package com.boot.smartcontactapp.Entities;
 import javax.persistence.*;
 
 @Entity(name = "contact")
-public class ContactTable {
+public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int cid;
@@ -17,7 +17,7 @@ public class ContactTable {
     private String description;
 
     @ManyToOne  // many contact are may be of one user
-    private UserTable userTable;
+    private User userTable;
 
     public int getCid() {
         return cid;
@@ -97,14 +97,14 @@ public class ContactTable {
                 '}';
     }
 
-    public ContactTable() {
+    public Contact() {
     }
 
-    public UserTable getUserTable() {
+    public User getUserTable() {
         return userTable;
     }
 
-    public void setUserTable(UserTable userTable) {
+    public void setUserTable(User userTable) {
         this.userTable = userTable;
     }
 }

@@ -1,7 +1,7 @@
 package com.boot.smartcontactapp.Controller;
 
 
-import com.boot.smartcontactapp.Entities.UserTable;
+import com.boot.smartcontactapp.Entities.User;
 import com.boot.smartcontactapp.Helper.Message;
 import com.boot.smartcontactapp.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +35,13 @@ public class HomeController {
     @GetMapping("/signup")
     public String signup(Model model) {
         model.addAttribute("title", "SignUp - Smart Contact Manager");
-        model.addAttribute("user", new UserTable());
+        model.addAttribute("user", new User());
         return "signup";
     }
 
     // handler for registering user
     @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute("user") UserTable user , BindingResult result, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model  ,HttpSession session  ) {
+    public String registerUser(@Valid @ModelAttribute("user") User user , BindingResult result, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model  , HttpSession session  ) {
         try {
             if (!agreement) {
                 throw new Exception("You have not agreed the terms and condition !");
@@ -55,8 +55,8 @@ public class HomeController {
             user.setEnabled(true);
             user.setImageURL("default.png");
 
-            UserTable ut = this.userRepo.save(user);
-            model.addAttribute("user", new UserTable()); // Putting new user for another registration after successful registration
+            User ut = this.userRepo.save(user);
+            model.addAttribute("user", new User()); // Putting new user for another registration after successful registration
             session.setAttribute("message", new Message("Successfully Registered !!!", "alert-success"));
 
             return "signup";
