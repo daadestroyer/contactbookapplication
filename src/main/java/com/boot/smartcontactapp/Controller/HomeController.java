@@ -59,6 +59,7 @@ public class HomeController {
             user.setImageURL("default.png");
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
+            System.out.println(user);
 
             User ut = this.userRepo.save(user);
             model.addAttribute("user", new User()); // Putting new user for another registration after successful registration
