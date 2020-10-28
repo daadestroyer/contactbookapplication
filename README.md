@@ -12,3 +12,6 @@ A single handedly project Smart Contact Manager Web based application using Spri
 
 # 4. SignUp Page (Showing Server Side Validatiton Using Hibernate Validator):-
 ![4  Server Side Validation using Hibernate Validator](https://user-images.githubusercontent.com/48306820/97289283-ff147f00-186c-11eb-8580-6981f5097189.png)
+
+# 5. Performing Role based authorization using Spring Security
+![4  3 Steps for Role Based Authorization Spring Security](https://user-images.githubusercontent.com/48306820/97389420-3e3fe000-1900-11eb-96dc-34df33303dbe.png)
