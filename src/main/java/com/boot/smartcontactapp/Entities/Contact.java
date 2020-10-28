@@ -17,7 +17,7 @@ public class Contact {
     private String description;
 
     @ManyToOne  // many contact are may be of one user
-    private User userTable;
+    private User user;
 
     public int getCid() {
         return cid;
@@ -100,11 +100,5 @@ public class Contact {
     public Contact() {
     }
 
-    public User getUserTable() {
-        return userTable;
-    }
 
-    public void setUserTable(User userTable) {
-        this.userTable = userTable;
-    }
 }

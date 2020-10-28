@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "user")
+@Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,7 +36,7 @@ public class User {
     @Length(min = 20 , max = 1000 , message = "About must be greater than 6 and less than 1000 length!")
     private String about;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "userTable") // one user may have many contacts
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user") // one user may have many contacts
     private List<Contact> contacts = new ArrayList<>();
 
 

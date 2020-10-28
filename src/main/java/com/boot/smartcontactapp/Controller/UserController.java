@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 
+    // http://localhost:8080/user/index
     @GetMapping("/index")
     public String dashboard(){
         return "normal/user-dashboard";

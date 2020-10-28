@@ -3,8 +3,9 @@ package com.boot.smartcontactapp.Controller;
 
 import com.boot.smartcontactapp.Entities.User;
 import com.boot.smartcontactapp.Helper.Message;
-import com.boot.smartcontactapp.Repo.UserRepo;
+import com.boot.smartcontactapp.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +18,10 @@ import javax.validation.Valid;
 public class HomeController {
 
     @Autowired
-    private UserRepo userRepo;
+    private UserRepository userRepo;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -54,6 +57,8 @@ public class HomeController {
             user.setRole("role_user");
             user.setEnabled(true);
             user.setImageURL("default.png");
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
 
             User ut = this.userRepo.save(user);
             model.addAttribute("user", new User()); // Putting new user for another registration after successful registration
