@@ -1,5 +1,5 @@
 # Smart-Contact-Manager
-A single handedly project Smart Contact Manager Web based application using Spring Boot + Hibernate Data JPA + Thymeleaf + Spring Security
+A single handedly project Smart Contact Manager Web based application using Spring Boot + Spring Data JPA + Thymeleaf + Spring Security
 
 # 1. Home Page:-
 ![1](https://user-images.githubusercontent.com/48306820/97289454-35ea9500-186d-11eb-8509-2065c356b353.png)
