@@ -40,6 +40,7 @@ public class User {
     private List<Contact> contacts = new ArrayList<>();
 
 
+
     public int getId() {
         return id;
     }
@@ -129,4 +130,5 @@ public class User {
                 ", contacts=" + contacts +
                 '}';
     }
+
 }
