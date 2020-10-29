@@ -25,7 +25,7 @@ public class User {
     private String email;
 
     @NotBlank(message = "Password should not be blank")
-    @Size(min=6 , max = 20 , message = "Password must be greater than 6 and less than 20 character!")
+    @Size(min=6 , max = 1000 , message = "Password must be greater than 6 and less than 20 character!")
     private String password;
 
     private String role;
