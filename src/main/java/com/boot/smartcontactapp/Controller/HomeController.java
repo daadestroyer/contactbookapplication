@@ -1,6 +1,5 @@
 package com.boot.smartcontactapp.Controller;
 
-
 import com.boot.smartcontactapp.Entities.User;
 import com.boot.smartcontactapp.Helper.Message;
 import com.boot.smartcontactapp.Repo.UserRepository;
@@ -44,14 +43,14 @@ public class HomeController {
 
     // handler for registering user
     @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute("user") User user , BindingResult result, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model  , HttpSession session  ) {
+    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model, HttpSession session) {
         try {
             if (!agreement) {
                 throw new Exception("You have not agreed the terms and condition !");
             }
-            if(result.hasErrors()){
-                System.out.println("ERROR!!!"+result.toString());
-                model.addAttribute("user",user);
+            if (result.hasErrors()) {
+                System.out.println("ERROR!!!" + result.toString());
+                model.addAttribute("user", user);
                 return "signup";
             }
             user.setRole("role_user");
@@ -73,5 +72,11 @@ public class HomeController {
             session.setAttribute("message", new Message("Something went wrong ! " + e.getMessage(), "alert-danger"));
             return "signup";
         }
+    }
+
+    @GetMapping("/signin")
+    public String login(Model model) {
+        model.addAttribute("title", "Login - Smart Contact Manager");
+        return "login";
     }
 }

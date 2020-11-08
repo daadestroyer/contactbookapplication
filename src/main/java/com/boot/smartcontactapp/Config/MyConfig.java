@@ -26,14 +26,12 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-
         daoAuthenticationProvider.setUserDetailsService(this.getUserDetailsService());
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
     }
 
     // configure method
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
@@ -41,10 +39,15 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         // by this method we can tell which page need to me protected
         http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
                                 .antMatchers("/user/**").hasRole("USER")
-                                .antMatchers("/**").permitAll().and().formLogin().and().csrf().disable();
+                                .antMatchers("/**").permitAll().and().formLogin().loginPage("/signin").and().csrf().disable();
     }
-
 }
+
+
+
+
+
