@@ -11,10 +11,12 @@ public class UserController {
 
 
     // dashboard home
-    @GetMapping("/index")
+    @RequestMapping("/index")
     public String dashboard(Model model) {
         model.addAttribute("title", "User Dashboard");
         return "dashboard";
     }
+
+
 
 }
