@@ -18,3 +18,15 @@ A single handedly project Smart Contact Manager Web based application using Spri
 
 # 6. Several methods that we can use to configure the behaviour of the form login in Spring Security
 ![spring security login methods](https://user-images.githubusercontent.com/48306820/98463338-928c6f00-21e0-11eb-9d71-ece14181cdc1.png)
+
+# 7. Login Page
+![login page](https://user-images.githubusercontent.com/48306820/98464148-d7b39f80-21e6-11eb-840b-bc42cbfb8f14.png)
+   
+# 8. Invalid Username and Password
+![login page1](https://user-images.githubusercontent.com/48306820/98464157-e39f6180-21e6-11eb-99d2-e74228447c3d.png)
+ 
+# 9. User Dashboard
+![login page2](https://user-images.githubusercontent.com/48306820/98464132-b783e080-21e6-11eb-8ef2-6fd6eba7848c.png)
+
+# 10. User logged out
+![login page3](https://user-images.githubusercontent.com/48306820/98464165-fade4f00-21e6-11eb-8418-519b5b95a81c.png)
