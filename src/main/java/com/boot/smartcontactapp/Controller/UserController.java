@@ -1,6 +1,7 @@
 package com.boot.smartcontactapp.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 
-    // http://localhost:8080/user/index
+
+    // dashboard home
     @GetMapping("/index")
-    public String dashboard(){
-        return "normal/user-dashboard";
+    public String dashboard(Model model) {
+        model.addAttribute("title", "User Dashboard");
+        return "dashboard";
     }
+
 }

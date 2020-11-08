@@ -39,11 +39,14 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        // by this method we can tell which page need to me protected
         http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
-                                .antMatchers("/user/**").hasRole("USER")
-                                .antMatchers("/**").permitAll().and().formLogin().loginPage("/signin").and().csrf().disable();
+                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/**").permitAll().and().formLogin()
+                .loginPage("/signin")
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/user/index",true)
+//                .failureUrl("/login-fail")
+                .and().csrf().disable();
     }
 }
 

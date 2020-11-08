@@ -17,66 +17,80 @@ import javax.validation.Valid;
 public class HomeController {
 
     @Autowired
-    private UserRepository userRepo;
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private UserRepository userRepository;
 
-    @GetMapping("/")
+    @RequestMapping("/")
     public String home(Model model) {
         model.addAttribute("title", "Home - Smart Contact Manager");
         return "home";
     }
 
-    @GetMapping("/about")
+    @RequestMapping("/about")
     public String about(Model model) {
         model.addAttribute("title", "About - Smart Contact Manager");
         return "about";
     }
 
-    @GetMapping("/signup")
+    @RequestMapping("/signup")
     public String signup(Model model) {
-        model.addAttribute("title", "SignUp - Smart Contact Manager");
+        model.addAttribute("title", "Register - Smart Contact Manager");
         model.addAttribute("user", new User());
         return "signup";
     }
 
     // handler for registering user
-    @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model, HttpSession session) {
+    @RequestMapping(value = "/do_register", method = RequestMethod.POST)
+    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result1,
+                               @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model,
+                               HttpSession session) {
+
         try {
+
             if (!agreement) {
-                throw new Exception("You have not agreed the terms and condition !");
+                System.out.println("You have not agreed the terms and conditions");
+                throw new Exception("You have not agreed the terms and conditions");
             }
-            if (result.hasErrors()) {
-                System.out.println("ERROR!!!" + result.toString());
+
+            if (result1.hasErrors()) {
+                System.out.println("ERROR " + result1.toString());
                 model.addAttribute("user", user);
                 return "signup";
             }
-            user.setRole("role_user");
+
+            user.setRole("ROLE_USER");
             user.setEnabled(true);
             user.setImageURL("default.png");
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-            System.out.println(user);
+            System.out.println("Agreement " + agreement);
+            System.out.println("USER " + user);
 
-            User ut = this.userRepo.save(user);
-            model.addAttribute("user", new User()); // Putting new user for another registration after successful registration
-            session.setAttribute("message", new Message("Successfully Registered !!!", "alert-success"));
+            User result = this.userRepository.save(user);
 
+            model.addAttribute("user", new User());
+
+            session.setAttribute("message", new Message("Successfully Registered !!", "alert-success"));
             return "signup";
 
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("user", user);
-            session.setAttribute("message", new Message("Something went wrong ! " + e.getMessage(), "alert-danger"));
+            session.setAttribute("message", new Message("Something Went wrong !! " + e.getMessage(), "alert-danger"));
             return "signup";
         }
+
     }
 
+    //handler for custom login
     @GetMapping("/signin")
-    public String login(Model model) {
-        model.addAttribute("title", "Login - Smart Contact Manager");
+    public String customLogin(Model model)
+    {
+        model.addAttribute("title","Login Page");
         return "login";
     }
+
+
 }
