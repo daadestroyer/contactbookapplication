@@ -86,10 +86,15 @@ public class HomeController {
 
     //handler for custom login
     @GetMapping("/signin")
-    public String customLogin(Model model)
-    {
-        model.addAttribute("title","Login Page");
+    public String customLogin(Model model) {
+        model.addAttribute("title", "Login Page");
         return "login";
+    }
+
+    @GetMapping("/login-fail")
+    public String loginFail() {
+        return "login-fail";
+
     }
 
 
