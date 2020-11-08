@@ -15,3 +15,6 @@ A single handedly project Smart Contact Manager Web based application using Spri
 
 # 5. Performing Role based authorization using Spring Security
 ![4  3 Steps for Role Based Authorization Spring Security](https://user-images.githubusercontent.com/48306820/97389420-3e3fe000-1900-11eb-96dc-34df33303dbe.png)
+
+# 6. Several methods that we can use to configure the behaviour of the form login in Spring Security
+![spring security login methods](https://user-images.githubusercontent.com/48306820/98463338-928c6f00-21e0-11eb-9d71-ece14181cdc1.png)
