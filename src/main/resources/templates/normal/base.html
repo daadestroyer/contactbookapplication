@@ -94,17 +94,12 @@ END navbar -->
 
     <!-- message box  -->
     <div th:if="${session.message}" class="container">
-
-        <div th:classappend="${'alert-'+session.message.type}" class="alert  text-center" role="alert">
-
-            <span th:text="${session.message.content}"></span>
-
+        <div th:classappend="${session.message.type}" class="alert text-center" role="alert">
+            <span style="font-weight: bolder;" th:text="${session.message.content}"></span>
         </div>
 
         <th:block th:text="${#session.removeAttribute('message')}"></th:block>
-
     </div>
-
 
     <div th:replace="${content}"></div>
 
