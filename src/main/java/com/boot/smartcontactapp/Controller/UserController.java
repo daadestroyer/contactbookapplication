@@ -4,13 +4,17 @@ import com.boot.smartcontactapp.Entities.Contact;
 import com.boot.smartcontactapp.Entities.User;
 import com.boot.smartcontactapp.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 
 @Controller
@@ -50,17 +54,37 @@ public class UserController {
 
     // save contact handler
     @PostMapping("/process-contact")
-    public String processContact(@ModelAttribute("contact") Contact contact, Principal principal) {
-        String name = principal.getName();
-        User user = this.userRepository.getUserByUserName(name);
-        // contact me user store kia
-        contact.setUser(user);
-        // user me contact store kia
-        user.getContacts().add(contact);
-        this.userRepository.save(user);
+    public String processContact(@ModelAttribute("contact") Contact contact,
+                                 @RequestParam("profileImage") MultipartFile multipartFile,
+                                 Principal principal) {
+        try {
+            String name = principal.getName();
+            User user = this.userRepository.getUserByUserName(name);
 
-        System.out.println("Contact Added");
+            // processing and uploading file
+            if (multipartFile.isEmpty()) {
+                // if file is empty
+                System.out.println("File is empty");
+            } else {
+                // if not then save to particular folder
+                contact.setImage(multipartFile.getOriginalFilename());
+                File file = new ClassPathResource("static/img").getFile();
+                Path path = Paths.get(file.getAbsolutePath() + File.separator + "(" + user.getId() + ")" + multipartFile.getOriginalFilename());
+                Files.copy(multipartFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+            }
+            // contact me user store kia
+            contact.setUser(user);
+            // user me contact store kia
+            user.getContacts().add(contact);
+            // saving data
+            this.userRepository.save(user);
+
+        } catch (Exception e) {
+            System.out.println("ERROR " + e.getMessage());
+            e.printStackTrace();
+        }
         return "normal/add-contact";
+
     }
 
 }
