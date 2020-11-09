@@ -30,3 +30,9 @@ A single handedly project Smart Contact Manager Web based application using Spri
 
 # 10. User logged out
 ![login page3](https://user-images.githubusercontent.com/48306820/98464165-fade4f00-21e6-11eb-8418-519b5b95a81c.png)
+
+# 11. User Dashboard
+![user dashboard2](https://user-images.githubusercontent.com/48306820/98502015-f06b9600-2276-11eb-9cc9-d93f35ddbf11.png)
+
+# 12. Add Contact
+![user dashboard1](https://user-images.githubusercontent.com/48306820/98502018-f2355980-2276-11eb-959d-dee27538880f.png)
