@@ -3,6 +3,7 @@ package com.boot.smartcontactapp.Controller;
 import com.boot.smartcontactapp.Entities.Contact;
 import com.boot.smartcontactapp.Entities.User;
 import com.boot.smartcontactapp.Helper.Message;
+import com.boot.smartcontactapp.Repo.ContactRepository;
 import com.boot.smartcontactapp.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -18,6 +19,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -25,6 +27,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ContactRepository contactRepository;
 
     @ModelAttribute
     public void addCommonData(Model model, Principal principal) {
@@ -64,6 +69,7 @@ public class UserController {
             String name = principal.getName();
             User user = this.userRepository.getUserByUserName(name);
 
+
             // processing and uploading file
             if (multipartFile.isEmpty()) {
                 // if file is empty
@@ -83,16 +89,30 @@ public class UserController {
             this.userRepository.save(user);
 
             // success message
-            session.setAttribute("message",new Message("Contact Added Successfully !!!","alert-success"));
+            session.setAttribute("message", new Message("Contact Added Successfully !!!", "alert-success"));
 
         } catch (Exception e) {
             System.out.println("ERROR " + e.getMessage());
             e.printStackTrace();
-            session.setAttribute("message",new Message("Something Went Wrong Try Again !","alert-danger"));
+            session.setAttribute("message", new Message("Something Went Wrong Try Again !!!" + e.getMessage(), "alert-danger"));
 
         }
         return "normal/add-contact";
 
+    }
+
+    // view contacts
+    @GetMapping("/view-contacts")
+    public String viewContact(Model model, Principal principal) {
+        model.addAttribute("title", "View Contacts");
+
+        String userName = principal.getName();
+
+        User user = this.userRepository.getUserByUserName(userName);
+
+        List<Contact> contacts = this.contactRepository.findContactsByUser(user.getId());
+        model.addAttribute("contacts", contacts);
+        return "normal/view-contacts";
     }
 
 }
