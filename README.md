@@ -41,4 +41,7 @@ A single handedly project Smart Contact Manager Web based application using Spri
 ![dashboard error2](https://user-images.githubusercontent.com/48306820/98508808-206e6580-2286-11eb-860a-0d016841858f.png)
 
 # 12. View Contact 
-![view contacts](https://user-images.githubusercontent.com/48306820/98637797-f46ae700-234e-11eb-87d6-a744be838352.png)
+![view contacts](https://user-images.githubusercontent.com/48306820/98701570-708d1b00-239f-11eb-83f1-a4398d4c8a75.png)
+
+# 13. Contacts Details
+![contact details](https://user-images.githubusercontent.com/48306820/98701716-9a464200-239f-11eb-9c9a-f2c79d57e13a.png)
