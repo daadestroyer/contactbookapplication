@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
@@ -74,13 +76,14 @@ public class UserController {
 
             // processing and uploading file
             if (multipartFile.isEmpty()) {
-                // if file is empty
-                System.out.println("File is empty");
+                // if file is empty set default photo
+                contact.setImage("user.png");
+
             } else {
                 // if not then save to particular folder
                 contact.setImage(multipartFile.getOriginalFilename());
                 File file = new ClassPathResource("static/img").getFile();
-                Path path = Paths.get(file.getAbsolutePath() + File.separator + "(" + user.getId() + ")" + multipartFile.getOriginalFilename());
+                Path path = Paths.get(file.getAbsolutePath() + File.separator +   multipartFile.getOriginalFilename());
                 Files.copy(multipartFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             }
             // contact me user store kia
@@ -124,9 +127,12 @@ public class UserController {
     }
 
     // profile handler
-    @GetMapping("/profile")
-    public String profile(Model model) {
+    @GetMapping("/profile/{id}")
+    public String profile(@PathVariable("id") int id, Model model) {
         model.addAttribute("title", "Profile - Smart Contact Manager");
+        Optional<Contact> contact_optional = this.contactRepository.findById(id);
+        Contact contact = contact_optional.get();
+        model.addAttribute("contact",contact);
         return "normal/profile";
     }
 

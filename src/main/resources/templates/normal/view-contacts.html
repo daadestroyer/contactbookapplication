@@ -19,14 +19,20 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
+                    <th scope="col">Profile</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="c : ${contacts}">
                     <th scope="row" th:text="${'SCM_USER_'+c.cId}">1</th>
-                    <td th:text="${c.name}"></td>
-                    <td th:text="${c.email}"></td>
+                    <td>
+                        <img src="" class="profile-pic" th:src="@{'/img/'+${c.image}}" alt="profile-photo">
+                        <span th:text="${c.name}">Mark</span>
+                    </td>
+                    <td ><a href="" th:href="@{'/user/profile/'+${c.cId}}"><span th:text="${c.email}"></span></a></td>
+
+                    <td th:text="${'+91-'+c.phone}"></td>
                     <td th:text="${'+91-'+c.phone}"></td>
                     <td style="color:white;"><a href="#"><i
                             class="far fa-trash-alt text-danger" style="font-size: 30px;"></i></a>
@@ -43,7 +49,8 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li th:if="${currentpage!=0}" class="page-item">
-                        <a class="page-link" href="#" th:href="@{'/user/view-contacts/'+${currentpage-1}}" aria-label="Previous">
+                        <a class="page-link" href="#" th:href="@{'/user/view-contacts/'+${currentpage-1}}"
+                           aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
@@ -55,7 +62,8 @@
                             th:text="${i}"></span></a></li>
 
                     <li th:if="${currentpage+1!=totalpage}" class="page-item">
-                        <a class="page-link" href="#" th:href="@{'/user/view-contacts/'+${currentpage+1}}" aria-label="Next">
+                        <a class="page-link" href="#" th:href="@{'/user/view-contacts/'+${currentpage+1}}"
+                           aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </a>
