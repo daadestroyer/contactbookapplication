@@ -7,6 +7,8 @@ import com.boot.smartcontactapp.Repo.ContactRepository;
 import com.boot.smartcontactapp.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,14 +49,14 @@ public class UserController {
     // dashboard home
     @GetMapping("/dashboard")
     public String dashboard(Model model, Principal principal) {
-        model.addAttribute("title", "User Dashboard");
+        model.addAttribute("title", "Dashboard - Smart Contact Manager");
         return "normal/user_dashboard";
     }
 
     // add contact handler
     @GetMapping("/add-contact")
     public String addContact(Model model) {
-        model.addAttribute("title", "Add Contact");
+        model.addAttribute("title", "Add Contacts - Smart Contact Manager");
         model.addAttribute("contact", new Contact());
         return "normal/add-contact";
     }
@@ -102,17 +104,37 @@ public class UserController {
     }
 
     // view contacts
-    @GetMapping("/view-contacts")
-    public String viewContact(Model model, Principal principal) {
-        model.addAttribute("title", "View Contacts");
+    // per page 5 contacts
+    // current page = 0
+    @GetMapping("/view-contacts/{page}")
+    public String viewContact(@PathVariable("page") int page, Model model, Principal principal) {
+        model.addAttribute("title", "Contacts - Smart Contact Manager");
 
         String userName = principal.getName();
 
         User user = this.userRepository.getUserByUserName(userName);
+        // this of() take two things 1st is current page and 2nd is contact per page
+        PageRequest pageRequest = PageRequest.of(page, 5);
+        Page<Contact> contacts = this.contactRepository.findContactsByUser(user.getId(), pageRequest);
 
-        List<Contact> contacts = this.contactRepository.findContactsByUser(user.getId());
         model.addAttribute("contacts", contacts);
+        model.addAttribute("currentpage", page); // getting current page
+        model.addAttribute("totalpage", contacts.getTotalPages()); // getting total page
         return "normal/view-contacts";
+    }
+
+    // profile handler
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        model.addAttribute("title", "Profile - Smart Contact Manager");
+        return "normal/profile";
+    }
+
+    // settings handler
+    @GetMapping("/settings")
+    public String settings(Model model) {
+        model.addAttribute("title", "Settings - Smart Contact Manager");
+        return "normal/settings";
     }
 
 }

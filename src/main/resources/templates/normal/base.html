@@ -13,9 +13,11 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
           crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
 
-    <link rel="stylesheet" th:href="@{../css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 
     <title th:text="${title}">Base html</title>
 </head>
@@ -46,20 +48,19 @@
             </a></li>
 
 
-
             <li class="nav-item"><a class="nav-link " href="#"
 
-                                    tabindex="-1" aria-disabled="true"><span style="color:white;font-weight: bolder;" th:text="${user.name}"></span></a></li>
-
+                                    tabindex="-1" aria-disabled="true"><span style="color:white;font-weight: bolder;"
+                                                                             th:text="${user.name}"></span></a></li>
 
 
             <li class="nav-item"><a class="nav-link " th:href="@{/logout}" href="#"
-                                    tabindex="-1" aria-disabled="true"><i style="color:black;font-weight: bolder;" class="fas fa-sign-out-alt"></i> Logout</a></li>
-
+                                    tabindex="-1" aria-disabled="true"><i style="color:black;font-weight: bolder;"
+                                                                          class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
 
 
         </ul>
-
 
 
     </div>
@@ -69,15 +70,15 @@ END navbar -->
 
 
 <!-- sidebar  -->
-<div class="sidebar mt-2" >
+<div class="sidebar mt-2">
 
     <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
 
     <a href="#" th:href="@{/user/dashboard}" class="item"> <i class="fas fa-home"></i> Home</a>
-    <a href="#" th:href="@{/user/view-contacts}" class="item"><i class="fas fa-id-card-alt"></i> View Contacts</a>
+    <a href="#" th:href="@{/user/view-contacts/0}" class="item"><i class="fas fa-id-card-alt"></i> View Contacts</a>
     <a href="#" th:href="@{/user/add-contact}" class="item"><i class="fas fa-pencil-alt"></i> Add Contact</a>
-    <a href="#" class="item"><i class="fas fa-user-circle"></i> Your Profile </a>
-    <a href="#" class="item"> <i class="fas fa-cogs"></i> Settings</a>
+    <a href="#" th:href="@{/user/profile}" class="item"><i class="fas fa-user-circle"></i> Your Profile </a>
+    <a href="#" th:href="@{/user/settings}" class="item"> <i class="fas fa-cogs"></i> Settings</a>
 
     <div class="divider"></div>
 
@@ -123,6 +124,6 @@ END navbar -->
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 
-<script th:src="@{../js/script.js}"></script>
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>
