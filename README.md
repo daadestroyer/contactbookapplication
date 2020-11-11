@@ -45,3 +45,6 @@ A single handedly project Smart Contact Manager Web based application using Spri
 
 # 13. Contacts Details
 ![contact details](https://user-images.githubusercontent.com/48306820/98701716-9a464200-239f-11eb-9c9a-f2c79d57e13a.png)
+
+# 14. Invalid Contacts
+![invalid contact](https://user-images.githubusercontent.com/48306820/98768958-0cea0880-2406-11eb-9b36-2cc986da427e.png)

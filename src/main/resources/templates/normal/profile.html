@@ -10,7 +10,7 @@
 <body>
 <section>
 
-    <div class="container emp-profile">
+    <div class="container emp-profile" th:if="${contact}">
         <form method="post">
             <div class="row">
                 <div class="col-md-4">
@@ -33,10 +33,12 @@
                         <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                   aria-controls="home" aria-selected="true">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                   aria-controls="profile" aria-selected="false">Timeline</a>
                             </li>
                         </ul>
                     </div>
@@ -76,7 +78,7 @@
                                     <label>Name</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p th:text="${contact.name}"> </p>
+                                    <p th:text="${contact.name}"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -84,7 +86,7 @@
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p th:text="${contact.email}"> </p>
+                                    <p th:text="${contact.email}"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -92,7 +94,7 @@
                                     <label>Phone</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p th:text="${contact.phone}"> </p>
+                                    <p th:text="${contact.phone}"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -100,7 +102,7 @@
                                     <label>Profession</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p th:text="${contact.work}"> </p>
+                                    <p th:text="${contact.work}"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -108,7 +110,7 @@
                                     <label>Description</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p th:utext="${contact.description}"> </p>
+                                    <p th:utext="${contact.description}"></p>
                                 </div>
                             </div>
                         </div>
@@ -164,6 +166,11 @@
                 </div>
             </div>
         </form>
+
+    </div>
+    <div th:unless="${contact}" class="alert alert-danger text-center col-xl-12 col-md-12 col-sm-12 mt-5" role="alert"
+         style="border:1px solid black;">
+        <h3 style="font-weight: bolder" th:text="${'No user found of this id ...'}"></h3>
     </div>
 </section>
 </body>

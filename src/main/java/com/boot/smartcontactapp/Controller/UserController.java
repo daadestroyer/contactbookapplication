@@ -83,7 +83,7 @@ public class UserController {
                 // if not then save to particular folder
                 contact.setImage(multipartFile.getOriginalFilename());
                 File file = new ClassPathResource("static/img").getFile();
-                Path path = Paths.get(file.getAbsolutePath() + File.separator +   multipartFile.getOriginalFilename());
+                Path path = Paths.get(file.getAbsolutePath() + File.separator + multipartFile.getOriginalFilename());
                 Files.copy(multipartFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             }
             // contact me user store kia
@@ -128,11 +128,19 @@ public class UserController {
 
     // profile handler
     @GetMapping("/profile/{id}")
-    public String profile(@PathVariable("id") int id, Model model) {
+    public String profile(@PathVariable("id") int id, Model model, Principal principal) {
+
+        String name = principal.getName();
+        User user = this.userRepository.getUserByUserName(name);
+
+
         model.addAttribute("title", "Profile - Smart Contact Manager");
         Optional<Contact> contact_optional = this.contactRepository.findById(id);
         Contact contact = contact_optional.get();
-        model.addAttribute("contact",contact);
+
+        if (user.getId() == contact.getUser().getId()) {
+            model.addAttribute("contact", contact);
+        }
         return "normal/profile";
     }
 
