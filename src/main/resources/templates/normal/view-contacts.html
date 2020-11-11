@@ -34,10 +34,10 @@
 
                     <td th:text="${'+91-'+c.phone}"></td>
                     <td th:text="${'+91-'+c.phone}"></td>
-                    <td style="color:white;"><a href="#"><i
+                    <td style="color:white;"><a href="#" th:onclick="|deleteContact(${c.cId})|" ><i
                             class="far fa-trash-alt text-danger" style="font-size: 30px;"></i></a>
                         &nbsp
-                        <a href="#"><i
+                        <a href="#" th:href="@{'/user/update-contact/'+${c.cId}}"><i
                                 class="far fa-edit text-primary" style="font-size: 30px;"></i></a>
                     </td>
 

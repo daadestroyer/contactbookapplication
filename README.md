@@ -48,3 +48,9 @@ A single handedly project Smart Contact Manager Web based application using Spri
 
 # 14. Invalid Contacts
 ![invalid contact](https://user-images.githubusercontent.com/48306820/98768958-0cea0880-2406-11eb-9b36-2cc986da427e.png)
+
+# 15. Delete Contacts
+![delete contact successfully](https://user-images.githubusercontent.com/48306820/98771116-b7175f80-2409-11eb-94ad-fac7965bb4ec.png)
+
+# 16. Invalid Deletion
+![delete contact error](https://user-images.githubusercontent.com/48306820/98771495-9996c580-240a-11eb-9f56-b2e9f327a3e9.png)

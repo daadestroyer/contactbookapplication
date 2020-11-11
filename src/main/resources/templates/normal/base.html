@@ -16,7 +16,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
           integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
           crossorigin="anonymous"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <script>
+        function deleteContact(cid){
+            swal({
+                title: "Are you sure?",
+                text: "You want to delete this contact...",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                         window.location="/user/delete-contact/"+cid;
+                    } else {
+                        swal("Okay ! your contact is safe !!!");
+                    }
+                });
+        }
+    </script>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 
     <title th:text="${title}">Base html</title>
