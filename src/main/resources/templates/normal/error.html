@@ -6,13 +6,52 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title th:text="${pageTitle}">Error Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .error-code {
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+        }
+
+        body {
+            background-color: #009688;
+        }
+    </style>
 </head>
 <body>
 <section>
-    <center>
-        <h3 th:text="${pageMessage}"></h3>
-        <a href="/">Go Home</a>
-    </center>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12 col-sm-6 col-xl-12 col-lg-12 error-code">
+                <h1 style="font-size:20em;"><span th:text="${errorCode}"></span></h1>
+                <h1 style="font-size:5em;"><span th:text="${errorMessage}"></span></h1>
+            </div>
+            <div class="col-md-12 col-sm-6 col-xl-12 col-lg-12 error-message text-center">
+                <h3 style="color: black;text-decoration: none;"><a style="color: black;text-decoration: none;" href="#"
+                                                                   th:href="@{/}">HOME</a> | <a
+                        style="color: black;text-decoration: none;" href="" th:href="@{/signin}">LOGIN</a>
+                    | <a style="color: black;text-decoration: none;" href="" th:href="@{/signup}">SIGNUP</a>
+                    | <a style="color: black;text-decoration: none;" href="" th:href="@{/about}">ABOUT</a></h3>
+            </div>
+        </div>
+    </div>
 </section>
 </body>
 </html>

@@ -19,38 +19,38 @@ public class MyErrorController implements ErrorController {
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
         String errorPage = "error";
-        String pageMessage = "error";
-        String pageTitle = "errorPage";
+        String errorMessage = "error";
+        String errorCode = "errorPage";
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         if (status != null) {
             Integer statusCode = Integer.valueOf(status.toString());
 
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                pageTitle = "Error 404 !!!";
-                pageMessage = "Error 404 - Page not found";
+                errorCode = "404";
+                errorMessage = "Page not found";
                 errorPage = "error/404";
                 LOGGER.error("ERROR 404");
             } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                pageTitle = " Error 500 !!!";
-                pageMessage = "Error 500 - Internal Server Error";
+                errorCode = "500";
+                errorMessage = " Internal Server Error";
                 errorPage = "error/500";
                 LOGGER.error("Error 500");
             } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
-                pageTitle = "Error 403 !!!";
-                pageMessage = "Error 403 - Forbidden Error";
+                errorCode = "403";
+                errorMessage = "Forbidden Error";
                 errorPage = "error/403";
                 LOGGER.error("Error 403");
             }else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
-                pageTitle = "Error 405 !!!";
-                pageMessage = "Error 405 - Method not allowed here";
+                errorCode = "405";
+                errorMessage = " Method not allowed here";
                 errorPage = "error/404";
                 LOGGER.error("Error 405");
             }
 
 
         }
-        model.addAttribute("pageTitle", pageTitle);
-        model.addAttribute("pageMessage", pageMessage);
+        model.addAttribute("errorCode", errorCode);
+        model.addAttribute("errorMessage", errorMessage);
         //do something like logging
         return "normal/error";
     }
