@@ -114,7 +114,7 @@ END navbar -->
 
 
     <!-- message box  -->
-    <div th:if="${session.message}" class="container">
+    <div th:if="${session.message}" class="container text-center">
         <div th:classappend="${session.message.type}" class="alert text-center" role="alert">
             <span style="font-weight: bolder;" th:text="${session.message.content}"></span>
         </div>

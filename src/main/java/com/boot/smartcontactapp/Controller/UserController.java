@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.nio.file.Files;
@@ -151,6 +152,7 @@ public class UserController {
         return "normal/settings";
     }
 
+    // deleting contact
     @GetMapping("/delete-contact/{cid}")
     public String deleteContact(@PathVariable("cid") int cid, Principal principal, HttpSession session) {
         try {
@@ -172,11 +174,51 @@ public class UserController {
             } else {
                 session.setAttribute("message", new Message("No user found !!!", "alert-danger"));
             }
-        }
-        catch (Exception e){
-            session.setAttribute("message", new Message("Something went wrong !!!"+e.getMessage(), "alert-danger"));
+        } catch (Exception e) {
+            session.setAttribute("message", new Message("Something went wrong !!!" + e.getMessage(), "alert-danger"));
             e.printStackTrace();
         }
         return "redirect:/user/view-contacts/0";
+    }
+
+    // update contact view
+    @PostMapping("/update-contact/{cid}")
+    public String updateForm(@PathVariable("cid") int cid, Model model) {
+        model.addAttribute("title", "Update Contact - Smart Contact Manager");
+        Contact contact = this.contactRepository.findById(cid).get();
+        model.addAttribute("contact", contact);
+        return "normal/update_form";
+    }
+
+    // update contact handler
+    @PostMapping("/update-contact")
+    public String updateHandler(@ModelAttribute Contact contact, @RequestParam("profileImage") MultipartFile multipartFile, Model model, HttpSession session, Principal principal) {
+
+        try {
+            // old contact detail
+            Contact oldcontact = this.contactRepository.findById(contact.getcId()).get();
+            if (!multipartFile.isEmpty()) {
+                // rewrite the file
+                // delete old photo
+
+                // update new photo
+                File file = new ClassPathResource("static/img").getFile();
+                Path path = Paths.get(file.getAbsolutePath() + File.separator + multipartFile.getOriginalFilename());
+                Files.copy(multipartFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+                contact.setImage(multipartFile.getOriginalFilename());
+            } else {
+                contact.setImage(oldcontact.getImage());
+            }
+            User user = this.userRepository.getUserByUserName(principal.getName());
+            contact.setUser(user);
+            this.contactRepository.save(contact);
+
+            session.setAttribute("message", new Message("Contact Updated Successfully !!!", "alert-success"));
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            session.setAttribute("message", new Message("Something Went Wrong Try Again !!!" + e.getMessage(), "alert-danger"));
+        }
+        return "redirect:/user/profile/"+ contact.getcId();
     }
 }
