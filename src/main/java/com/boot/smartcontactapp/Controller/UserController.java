@@ -9,13 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.nio.file.Files;
@@ -23,7 +21,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -184,10 +181,13 @@ public class UserController {
     // update contact view
     @PostMapping("/update-contact/{cid}")
     public String updateForm(@PathVariable("cid") int cid, Model model) {
+
         model.addAttribute("title", "Update Contact - Smart Contact Manager");
         Contact contact = this.contactRepository.findById(cid).get();
         model.addAttribute("contact", contact);
         return "normal/update_form";
+
+
     }
 
     // update contact handler
@@ -200,6 +200,9 @@ public class UserController {
             if (!multipartFile.isEmpty()) {
                 // rewrite the file
                 // delete old photo
+                File deletefile = new ClassPathResource("static/img").getFile();
+                File file1 = new File(deletefile, oldcontact.getImage());
+                file1.delete();
 
                 // update new photo
                 File file = new ClassPathResource("static/img").getFile();
@@ -219,6 +222,11 @@ public class UserController {
             e.printStackTrace();
             session.setAttribute("message", new Message("Something Went Wrong Try Again !!!" + e.getMessage(), "alert-danger"));
         }
-        return "redirect:/user/profile/"+ contact.getcId();
+        return "redirect:/user/profile/" + contact.getcId();
+    }
+
+    @GetMapping("/user-profile")
+    public String userProfile() {
+        return "normal/user-profile";
     }
 }

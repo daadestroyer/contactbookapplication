@@ -19,6 +19,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
+                    <th scope="col">Profile</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -29,18 +30,15 @@
                         <img src="" class="profile-pic" th:src="@{'/img/'+${c.image}}" alt="profile-photo">
                         <span th:text="${c.name}">Mark</span>
                     </td>
-                    <td><a href="" th:href="@{'/user/profile/'+${c.cId}}"><span th:text="${c.email}"></span></a></td>
+                    <td ><a href="" th:href="@{'/user/profile/'+${c.cId}}"><span th:text="${c.email}"></span></a></td>
 
                     <td th:text="${'+91-'+c.phone}"></td>
-
-                    <td style="color:white;"><a href="#" th:onclick="|deleteContact(${c.cId})|"><i
+                    <td th:text="${'+91-'+c.phone}"></td>
+                    <td style="color:white;"><a href="#" th:onclick="|deleteContact(${c.cId})|" ><i
                             class="far fa-trash-alt text-danger" style="font-size: 30px;"></i></a>
                         &nbsp
-                        <form method="post" th:action="@{'/user/update-contact/'+${c.cId}}">
-                            <button type="submit"><i
-                                    class="far fa-edit text-primary" style="font-size: 30px;"></i></button>
-                        </form>
-
+                        <a href="#" th:href="@{'/user/update-contact/'+${c.cId}}"><i
+                                class="far fa-edit text-primary" style="font-size: 30px;"></i></a>
                     </td>
 
 
@@ -79,6 +77,3 @@
 </section>
 </body>
 </html>
-
-
-
