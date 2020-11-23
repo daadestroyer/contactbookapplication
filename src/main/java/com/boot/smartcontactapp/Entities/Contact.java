@@ -1,5 +1,7 @@
 package com.boot.smartcontactapp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -19,7 +21,9 @@ public class Contact {
     private String description;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
+
 
     public int getcId() {
         return cId;

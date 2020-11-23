@@ -1,6 +1,7 @@
 package com.boot.smartcontactapp.Repo;
 
 import com.boot.smartcontactapp.Entities.Contact;
+import com.boot.smartcontactapp.Entities.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,6 @@ public interface ContactRepository extends JpaRepository<Contact, Integer> {
    1. current page
    2. Contact per page - 5
    */
+
+    public List<Contact> findByNameContainingAndUser(String name, User user);
 }
