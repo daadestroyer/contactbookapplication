@@ -61,7 +61,7 @@ A single handedly project Smart Contact Manager Web based application using Spri
 # 18. 404 Page not found
 ![404 Page not found](https://user-images.githubusercontent.com/48306820/103137905-4dba8a00-46f3-11eb-85bc-facd4244c4e3.PNG)
 
-# 19. 405 Page not found
+# 19. 405 Method not allowed here
 ![405 Method not allowed here](https://user-images.githubusercontent.com/48306820/103137908-514e1100-46f3-11eb-8f45-12943d1e14d6.PNG)
 
 # 20. 500 Internal server error
