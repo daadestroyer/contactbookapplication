@@ -57,3 +57,12 @@ A single handedly project Smart Contact Manager Web based application using Spri
 
 # 17. Search Contacts
 ![searching](https://user-images.githubusercontent.com/48306820/99934627-81b52f00-2d84-11eb-8472-407842b37f31.png)
+
+# 18. 404 Page not found
+![404 Page not found](https://user-images.githubusercontent.com/48306820/103137905-4dba8a00-46f3-11eb-85bc-facd4244c4e3.PNG)
+
+# 19. 405 Page not found
+![405 Method not allowed here](https://user-images.githubusercontent.com/48306820/103137908-514e1100-46f3-11eb-8f45-12943d1e14d6.PNG)
+
+# 20. 500 Internal server error
+![500 Internal Server Error](https://user-images.githubusercontent.com/48306820/103137909-527f3e00-46f3-11eb-80f0-109845ec2bcc.PNG)
