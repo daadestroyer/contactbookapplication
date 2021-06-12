@@ -10,8 +10,44 @@
 <body>
 <section>
     <center>
-        <h3>Settings</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="text-center mb-3">Change your password</h1>
+                            <form action="" th:action="@{/user/change-password}" method="post">
+                                <!--old password-->
+                                <div class="form-group text-left">
+                                    <label class="text-info ">Old password:</label><br>
+                                    <input type="password" class="form-control" placeholder="Enter old password"
+                                           required name="oldpswd">
+                                </div>
+                                <!--new password-->
+                                <div class="form-group text-left">
+                                    <label class="text-info">New password:</label><br>
+                                    <input type="password" class="form-control" placeholder="Enter new password"
+                                           required name="newpswd">
+                                </div>
+
+                                <div class="container text-center">
+                                    <button type="submit" class="btn btn-success">Change</button>
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </center>
+    <script>
+        $(document).ready(()=>{
+         $(".item").removeClass("active1");
+         $("#settings-link").addClass("active1");
+        });
+
+    </script>
 </section>
 </body>
 </html>

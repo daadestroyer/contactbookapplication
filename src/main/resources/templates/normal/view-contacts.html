@@ -15,45 +15,49 @@
 
             <!--Search Container-->
             <div class="search-container mt-4">
-                <input onkeyup="search()" id="search-input" type="text" class="form-control" placeholder="Search your contacts...">
+                <input onkeyup="search()" id="search-input" type="text" class="form-control"
+                       placeholder="Search your contacts...">
                 <div class="search-result">
                     <h1>this is result</h1>
                 </div>
             </div>
 
-            <table class="table mt-3">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Profile</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="c : ${contacts}">
-                    <th scope="row" th:text="${'SCM_USER_'+c.cId}">1</th>
-                    <td>
-                        <img src="" class="profile-pic" th:src="@{'/img/'+${c.image}}" alt="profile-photo">
-                        <span th:text="${c.name}">Mark</span>
-                    </td>
-                    <td><a href="" th:href="@{'/user/profile/'+${c.cId}}"><span th:text="${c.email}"></span></a></td>
+            <div class="table-responsive">
+                <table class="table mt-3 table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Profile</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Update</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="c : ${contacts}">
+                        <th scope="row" th:text="${c.cId}">1</th>
+                        <td>
+                            <img src="" class="profile-pic" th:src="@{'/img/'+${c.image}}" alt="profile-photo">
+                            <span th:text="${c.name}">Mark</span>
+                        </td>
+                        <td><a href="" th:href="@{'/user/profile/'+${c.cId}}"><span th:text="${c.email}"></span></a>
+                        </td>
 
-                    <td th:text="${'+91-'+c.phone}"></td>
-                    <td th:text="${'+91-'+c.phone}"></td>
-                    <td style="color:white;"><a href="#" th:onclick="|deleteContact(${c.cId})|"><i
-                            class="far fa-trash-alt text-danger" style="font-size: 30px;"></i></a>
-                        &nbsp
-                        <a href="#" th:href="@{'/user/update-contact/'+${c.cId}}"><i
-                                class="far fa-edit text-primary" style="font-size: 30px;"></i></a>
-                    </td>
-
-
-                </tr>
-                </tbody>
-            </table>
+                        <td th:text="${'+91-'+c.phone}"></td>
+                        <td th:text="${c.work}"></td>
+                        <td><a href="#" th:onclick="|deleteContact(${c.cId})|" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                        <td>
+                            <form method="post" th:action="@{'/user/update-contact/'+${c.cId}}" >
+                                <button type="submit" class="btn btn-warning btn-sm">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
             <!-- Pagination-->
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
@@ -82,7 +86,16 @@
 
         </div>
     </div>
+    <script>
+        $(document).ready(()=>{
+         $(".item").removeClass("active1");
+         $("#contact-link").addClass("active1");
+        });
 
+
+
+
+    </script>
 </section>
 </body>
 </html>

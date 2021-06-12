@@ -5,14 +5,17 @@ import com.boot.smartcontactapp.Entities.User;
 import com.boot.smartcontactapp.Helper.Message;
 import com.boot.smartcontactapp.Repo.ContactRepository;
 import com.boot.smartcontactapp.Repo.UserRepository;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -21,17 +24,46 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.Map;
 import java.util.Optional;
+
+import com.razorpay.*;
+
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private ContactRepository contactRepository;
+
+    @PostMapping("/create_order")
+    @ResponseBody
+    public String createOrder(@RequestBody Map<String, Object> data) throws RazorpayException {
+        System.out.println(data);
+        int price = Integer.parseInt(data.get("amount").toString());
+
+        // creating client
+        RazorpayClient client = new RazorpayClient("rzp_test_7Q4vwoisbJSk77", "HZPt1EIjyV8G5fawSeNVB3vW");
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("amount", price * 100); // convert amt into paise
+        jsonObject.put("currency", "INR");
+        jsonObject.put("receipt", "txn_22453");
+
+        // generate order
+        Order order = client.Orders.create((jsonObject));
+        System.out.println(order);
+
+        // if we want we can save order details into DB
+
+        return order.toString();
+    }
 
     @ModelAttribute
     public void addCommonData(Model model, Principal principal) {
@@ -86,7 +118,7 @@ public class UserController {
             }
             // contact me user store kia
             contact.setUser(user);
-            // user me contact store kia
+            // user se pahle contacts ki list mangayi usme fir hamne apna contact add kia
             user.getContacts().add(contact);
             // saving data
             this.userRepository.save(user);
@@ -117,7 +149,6 @@ public class UserController {
         // this of() take two things 1st is current page and 2nd is contact per page
         PageRequest pageRequest = PageRequest.of(page, 5);
         Page<Contact> contacts = this.contactRepository.findContactsByUser(user.getId(), pageRequest);
-
         model.addAttribute("contacts", contacts);
         model.addAttribute("currentpage", page); // getting current page
         model.addAttribute("totalpage", contacts.getTotalPages()); // getting total page
@@ -130,7 +161,6 @@ public class UserController {
 
         String name = principal.getName();
         User user = this.userRepository.getUserByUserName(name);
-
 
         model.addAttribute("title", "Profile - Smart Contact Manager");
         Optional<Contact> contact_optional = this.contactRepository.findById(id);
@@ -146,6 +176,26 @@ public class UserController {
     @GetMapping("/settings")
     public String settings(Model model) {
         model.addAttribute("title", "Settings - Smart Contact Manager");
+        return "normal/settings";
+    }
+
+    // change password handler
+    @PostMapping("/change-password")
+    public String changePassword(@RequestParam("oldpswd") String oldpassword, @RequestParam("newpswd") String newpassword, Principal principal, HttpSession session) {
+        String user = principal.getName();
+        User current_user = userRepository.getUserByUserName(user);
+
+        if (this.bCryptPasswordEncoder.matches(oldpassword, current_user.getPassword())) {
+            // change the password
+            current_user.setPassword(this.bCryptPasswordEncoder.encode(newpassword));
+            this.userRepository.save(current_user);
+            session.setAttribute("message", new Message("Password Change Successfully !!!", "alert-success"));
+
+        } else {
+            // error
+            session.setAttribute("message", new Message("Your old password is wrong !!!", "alert-danger"));
+
+        }
         return "normal/settings";
     }
 
@@ -229,4 +279,6 @@ public class UserController {
     public String userProfile() {
         return "normal/user-profile";
     }
+
+
 }

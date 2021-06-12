@@ -259,3 +259,9 @@ footer {
 }
 
 /* search div */
+
+/* side panel */
+.active1{
+    background: #009688 !important;
+    color: white !important;
+}

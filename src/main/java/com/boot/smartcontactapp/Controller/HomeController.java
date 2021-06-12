@@ -24,7 +24,6 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home(Model model) {
-
         model.addAttribute("title", "Home - Smart Contact Manager");
         return "home";
     }
@@ -53,7 +52,7 @@ public class HomeController {
             if (!agreement) {
                 System.out.println("You have not agreed the terms and conditions");
                 throw new Exception("You have not agreed the terms and conditions");
-            }
+            } 
 
             if (result1.hasErrors()) {
                 System.out.println("ERROR " + result1.toString());

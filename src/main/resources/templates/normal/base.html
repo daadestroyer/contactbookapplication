@@ -7,6 +7,15 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"/>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -94,11 +103,11 @@ END navbar -->
 
     <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
 
-    <a href="#" th:href="@{/user/dashboard}" class="item"> <i class="fas fa-home"></i> Home</a>
-    <a href="#" th:href="@{/user/view-contacts/0}" class="item"><i class="fas fa-id-card-alt"></i> View Contacts</a>
-    <a href="#" th:href="@{/user/add-contact}" class="item"><i class="fas fa-pencil-alt"></i> Add Contact</a>
-    <a href="#" th:href="@{/user/user-profile}" class="item"><i class="fas fa-user-circle"></i> Your Profile </a>
-    <a href="#" th:href="@{/user/settings}" class="item"> <i class="fas fa-cogs"></i> Settings</a>
+    <a id="home-link" href="#" th:href="@{/user/dashboard}" class="item active1"> <i class="fas fa-home"></i> Home</a>
+    <a id="contact-link" href="#" th:href="@{/user/view-contacts/0}" class="item"><i class="fas fa-id-card-alt"></i> View Contacts</a>
+    <a id="add-contact-link" href="#" th:href="@{/user/add-contact}" class="item"><i class="fas fa-pencil-alt"></i> Add Contact</a>
+    <a id="profile-link" href="#" th:href="@{/user/user-profile}" class="item"><i class="fas fa-user-circle"></i> Your Profile </a>
+    <a id="settings-link" href="#" th:href="@{/user/settings}" class="item"> <i class="fas fa-cogs"></i> Settings</a>
 
     <div class="divider"></div>
 
@@ -130,11 +139,7 @@ END navbar -->
 <!-- END Content area  -->
 
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+
 <script
         src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
@@ -143,7 +148,8 @@ END navbar -->
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script th:src="@{/js/script.js}"></script>
 </body>
 </html>

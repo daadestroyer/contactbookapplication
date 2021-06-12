@@ -6,12 +6,31 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+
 </head>
 <body>
 <section>
     <center>
         <h3>Welcome , <span class="text-danger" th:text="${user.name}"></span></h3>
     </center>
+
+    <hr>
+
+
+    <div class="container text-center">
+        <h3 class="my-2">Donate Us...</h3>
+        <input id="payment_field" type="text" class="form-control my-2" placeholder="Enter amount here" >
+        <div class="container text-center mt-4">
+            <button onclick="paymentStart()" class="btn btn-success btn-block">Checkout</button>
+        </div>
+    </div>
+    <script>
+        $(document).ready(()=>{
+         $(".item").removeClass("active1");
+         $("#home-link").addClass("active1");
+        });
+    </script>
+
 </section>
 </body>
 </html>

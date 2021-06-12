@@ -37,7 +37,8 @@ public class User {
     private String about;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user") // one user may have many contacts
-    private List<Contact> contacts = new ArrayList<>();
+    private List<Contact> contacts = new ArrayList<>(); /*  isko bol dia hai ki bhai tm alag se table create na karo
+                                                            contact table ka user colom reposiblity lelega */
 
 
 
