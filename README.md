@@ -7,10 +7,8 @@ Notes Yard is a highly scalable, low cost and high performant one stop solution 
 - A Markdown Editor
 - Creating private notebooks and notes
 
-# Project Overview
-<p align="center">
-  <img src="https://image-dock-uploads-be.s3.ap-south-1.amazonaws.com/image.2021-04-27T15%3A50%3A01.249Z" />
-</p>
+# Entity and Relationship
+![scm1](https://user-images.githubusercontent.com/48306820/126104895-0ac873a9-61b3-4a26-b9b6-d7e5e6e1ecb0.png)
 
 # Application Links
 
