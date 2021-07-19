@@ -65,7 +65,6 @@ application.properties -> [https://bit.ly/3wJ2d6o](https://bit.ly/3wJ2d6o)
 
 [![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@daadestroyer_14&color=grey&logo=instagram&style=flat&logoColor=white&colorA=blue)](https://www.instagram.com/foodie_nigam/) 
 
-[![Facebook](https://img.shields.io/static/v1.svg?label=follow&message=@shubham nigam&color=grey&logo=facebook&style=flat&logoColor=white&colorA=blue)](https://www.facebook.com/shubham.nigam.562114)
-
+[![Facebook](https://img.shields.io/static/v1.svg?label=follow&message=@shubhamnigam&color=grey&logo=facebook&style=flat&logoColor=white&colorA=blue)](https://www.facebook.com/shubham.nigam.562114)
 
 
