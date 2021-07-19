@@ -12,6 +12,10 @@ Smart Contact Application is a Springboot and Thymeleaf web app along with Sprin
 # Entity and Relationship
 <img src="https://embed.creately.com/yAlD0xDqdhO?token=CcZ1tWAW2QMOwDKz&type=svg">
 
+
+# Entity and Relationship
+<img src="https://embed.creately.com/TlM52gYMqp5?token=PkIhgWfPvmIGT3lY&type=svg">
+
 # Application Links
 
 Assets Used -> [https://bit.ly/3hKdPlk](https://bit.ly/3hKdPlk)
