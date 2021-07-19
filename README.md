@@ -14,7 +14,8 @@ Smart Contact Application is a Springboot and Thymeleaf web app along with Sprin
 
 
 # Application Flow
-<img src="https://embed.creately.com/TlM52gYMqp5?type=svg">
+<!-- <img src="https://embed.creately.com/TlM52gYMqp5?type=svg"> -->
+![SCM - Flow Chart](https://user-images.githubusercontent.com/48306820/126115066-01d9f6ce-b46e-4016-bbcb-2a95d6dd10df.png)
 
 
 Assets Used -> [https://bit.ly/3hKdPlk](https://bit.ly/3hKdPlk)
