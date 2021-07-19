@@ -2,7 +2,7 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/daadestroyer) [![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)](https://github.com/daadestroyer)
 
-Notes Yard is a Springboot and Thymeleaf web app along with Spring Data JPa , Hibernate Validator and Validation API:
+Smart Contact Application is a Springboot and Thymeleaf web app along with Spring Data JPa , Hibernate Validator and Validation API:
 - User registration with all types of validations
 - addind contacts in the contact book
 - Search contact in contact book
