@@ -36,12 +36,12 @@ application.properties -> [https://bit.ly/3wJ2d6o](https://bit.ly/3wJ2d6o)
 <b>Authentication and Authorisation</b>: Hibernate Validator and Validation API
 
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://image-dock-uploads-be.s3.ap-south-1.amazonaws.com/image.2021-04-18T19%3A42%3A20.791Z" />
 </p>
 <p align="center">
   Architectural  Diargram 
-</p>
+</p> -->
 
 # Overall Functionlity
 - Perform secure user registration and logout along with validation of data
@@ -57,14 +57,6 @@ application.properties -> [https://bit.ly/3wJ2d6o](https://bit.ly/3wJ2d6o)
 
 ***Glad to see you here! Show some love by [starring](https://github.com/daadestroyer/smartcontactapplication) this repo.***
 
-[![LinkedIn](https://img.shields.io/static/v1.svg?label=connect&message=@daadestroyer&color=grey&logo=linkedin&style=flat&logoColor=white&colorA=blue)](https://www.linkedin.com/in/daadestroyer/) 
-
-[![Portfolio](https://img.shields.io/static/v1.svg?label=visit&message=@daadestroyer&color=grey&logo=portfolio&style=flat&logoColor=white&colorA=blue)](https://daadestroyer.github.io/)  
-
-[![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@daadestroyer_14&color=grey&logo=instagram&style=flat&logoColor=white&colorA=blue)](https://www.instagram.com/daadestroyer_14/) 
-
-[![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@daadestroyer_14&color=grey&logo=instagram&style=flat&logoColor=white&colorA=blue)](https://www.instagram.com/foodie_nigam/) 
-
-[![Facebook](https://img.shields.io/static/v1.svg?label=follow&message=@shubhamnigam&color=grey&logo=facebook&style=flat&logoColor=white&colorA=blue)](https://www.facebook.com/shubham.nigam.562114)
+[![LinkedIn](https://img.shields.io/static/v1.svg?label=connect&message=@daadestroyer&color=grey&logo=linkedin&style=flat&logoColor=white&colorA=blue)](https://www.linkedin.com/in/daadestroyer/)     [![Portfolio](https://img.shields.io/static/v1.svg?label=visit&message=@daadestroyer&color=grey&logo=portfolio&style=flat&logoColor=white&colorA=blue)](https://daadestroyer.github.io/)  [![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@daadestroyer_14&color=grey&logo=instagram&style=flat&logoColor=white&colorA=blue)](https://www.instagram.com/daadestroyer_14/) [![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@daadestroyer_14&color=grey&logo=instagram&style=flat&logoColor=white&colorA=blue)](https://www.instagram.com/foodie_nigam/) [![Facebook](https://img.shields.io/static/v1.svg?label=follow&message=@shubhamnigam&color=grey&logo=facebook&style=flat&logoColor=white&colorA=blue)](https://www.facebook.com/shubham.nigam.562114)
 
 
