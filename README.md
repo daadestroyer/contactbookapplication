@@ -8,7 +8,7 @@ Notes Yard is a highly scalable, low cost and high performant one stop solution 
 - Creating private notebooks and notes
 
 # Entity and Relationship
-![scm1](https://user-images.githubusercontent.com/48306820/126104895-0ac873a9-61b3-4a26-b9b6-d7e5e6e1ecb0.png)
+<img src="https://embed.creately.com/yAlD0xDqdhO?token=CcZ1tWAW2QMOwDKz&type=svg">
 
 # Application Links
 
