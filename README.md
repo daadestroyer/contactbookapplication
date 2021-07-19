@@ -2,56 +2,39 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/daadestroyer) [![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)](https://github.com/daadestroyer)
 
-Notes Yard is a highly scalable, low cost and high performant one stop solution to:
-- Upload notes and get sharable link and getting iframes to add in your website
-- A Markdown Editor
-- Creating private notebooks and notes
+Notes Yard is a Springboot and Thymeleaf web app along with Spring Data JPa , Hibernate Validator and Validation API:
+- User registration with all types of validations
+- addind contacts in the contact book
+- Search contact in contact book
+- Java mail used for OTP sending and creating new password
+- Razorpay payment gateway for donation 
 
 # Entity and Relationship
 <img src="https://embed.creately.com/yAlD0xDqdhO?token=CcZ1tWAW2QMOwDKz&type=svg">
 
 # Application Links
 
-Frontend Code -> [https://github.com/smilegupta/notes-yard-frontend](https://github.com/smilegupta/notes-yard-frontend)
+Assets Used -> [https://bit.ly/3hKdPlk](https://bit.ly/3hKdPlk)
 <br>
-Deployed URL -> [https://notes-yard.smilegupta.tech/](https://notes-yard.smilegupta.tech/)
+Frontend Code -> [https://bit.ly/3z6EqPg](https://bit.ly/3z6EqPg)
 <br>
-Backend Code -> [https://github.com/smilegupta/notes-yard-backend](https://github.com/smilegupta/notes-yard-backend)
+Backend Code -> [https://bit.ly/3wJsm57](https://bit.ly/3wJsm57)
 <br>
-API Docs -> [https://notesyard-api.smilegupta.tech](https://notesyard-api.smilegupta.tech)
+application.properties -> [https://bit.ly/3wJ2d6o](https://bit.ly/3wJ2d6o)
 
 # Tech Stack
 
-<b>Frontned</b>: Reactjs
+<b>Frontned</b>: Thyeleaf and Boostrap 4
 <br>
-<b>Additional NPM Libraries</b>
-  - react-toastify
-  - react-router-dom
-  - react-router-bootstrap
-  - react-password-mask
-  - react-modal
-  - react-copy-to-clipboard
-  - react-quill
-  - react-bootstrap
-  - axios
-  - aws-amplify
-  - @tippyjs/react
-  - react-markdown
-  - react-qr-code
-  - html-react-parser
-  - dompurify
-<br>
+<b>Spring Modules</b>
+  - SpringBoot
+  - Spring Data JPA
 <b>Styling</b>: CSS and BootStrap
 <br>
-<b>Database</b>: DynamoDB
+<b>Database</b>: MySql
 <br>
-<b>Authentication and Authorisation</b>: Cogito and Amplify
-<br>
-<b>Storing Images</b>: S3
-<br>
-<b>Compute</b>: AWS Lambda
-<br>
-<b>Deployment</b>: CI/CD setup using GitHub Actions via Serverless Framework
+<b>Authentication and Authorisation</b>: Hibernate Validator and Validation API
+
 
 <p align="center">
   <img src="https://image-dock-uploads-be.s3.ap-south-1.amazonaws.com/image.2021-04-18T19%3A42%3A20.791Z" />
@@ -61,16 +44,27 @@ API Docs -> [https://notesyard-api.smilegupta.tech](https://notesyard-api.smileg
 </p>
 
 # Overall Functionlity
-- Uploading a paste (publically) and getting a sharable link. 
-- A MD Previewer
-- Ability to make private notebooks and adding notes. 
-- User Management (Login, register, sending confirmation link, forgot password and email verification before entering the system) 
-- Authenticated Routes and 404 error page.
+- Perform secure user registration and logout along with validation of data
+- User can add contacts in contact table
+- User can search contact by name of contacts
+- User can't see other user contact 
+- Secured profile URL of users
+- Prevent opening of user profile page through URL manipulation
+- Java Mail to send OTP to setting new password
+- Integrate RazorPay payment Gateway for dontation
 
-# Upcoming Features
-- Sharable SWOT Board for Analysis
 
 
-***Glad to see you here! Show some love by [starring](https://github.com/smilegupta/notes-yard-frontend/) this repo.***
+***Glad to see you here! Show some love by [starring](https://github.com/daadestroyer/smartcontactapplication) this repo.***
 
-[![Facebook](https://img.shields.io/static/v1.svg?label=follow&message=@smileguptaaa&color=grey&logo=facebook&style=flat&logoColor=white&colorA=blue)](https://www.facebook.com/smileguptaaa)  [![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@smileguptaaa&color=grey&logo=instagram&style=flat&logoColor=white&colorA=blue)](https://www.instagram.com/smileguptaaa/) [![LinkedIn](https://img.shields.io/static/v1.svg?label=connect&message=@smilegupta&color=grey&logo=linkedin&style=flat&logoColor=white&colorA=blue)](https://www.linkedin.com/in/smilegupta/) [![Twitter](https://img.shields.io/static/v1.svg?label=connect&message=@smileguptaaa&color=grey&logo=twitter&style=flat&logoColor=white&colorA=blue)](https://twitter.com/smileguptaaa)
+[![LinkedIn](https://img.shields.io/static/v1.svg?label=connect&message=@daadestroyer&color=grey&logo=linkedin&style=flat&logoColor=white&colorA=blue)](https://www.linkedin.com/in/daadestroyer/) 
+
+[![Portfolio](https://img.shields.io/static/v1.svg?label=visit&message=@daadestroyer&color=grey&logo=portfolio&style=flat&logoColor=white&colorA=blue)](https://daadestroyer.github.io/)  
+
+[![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@daadestroyer_14&color=grey&logo=instagram&style=flat&logoColor=white&colorA=blue)](https://www.instagram.com/daadestroyer_14/) 
+
+[![Instagram](https://img.shields.io/static/v1.svg?label=follow&message=@daadestroyer_14&color=grey&logo=instagram&style=flat&logoColor=white&colorA=blue)](https://www.instagram.com/foodie_nigam/) 
+
+
+
+
