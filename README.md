@@ -4,9 +4,9 @@
 
 Contact Application is a Springboot and Thymeleaf web app along with Spring Data JPa , Hibernate Validator and Validation API:
 - User registration with all types of validations
-- addind contacts in the contact book
+- adding contacts in the contact book
 - Search contact in contact book
-- Java mail used for OTP sending and creating new password
+- Java mail used for OTP sending for forgot password module 
 - Razorpay payment gateway for donation 
 
 # Entity and Relationship
@@ -33,7 +33,9 @@ application.properties -> [https://bit.ly/3wJ2d6o](https://bit.ly/3wJ2d6o)
 <b>Spring Modules</b>
   - SpringBoot
   - Spring Data JPA
-<b>Styling</b>: CSS and BootStrap
+
+<br>
+<b>Styling</b>: CSS , BootStrap and Thymeleaf
 <br>
 <b>Database</b>: MySql
 <br>
